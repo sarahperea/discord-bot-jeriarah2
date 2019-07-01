@@ -34,7 +34,7 @@ module.exports.run = async(client, message, args) => {
 				if (r.event_url) embed.setURL(r.event_url)
 				if (r.status)    embed.addField('Status', r.status)	
 				if (r.time)  embed.addField('Start', getDateFormat(new Date(r.time)))
-				if (r.venue) 	 embed.addField(`${r.venue.name || ''}, ${r.venue.address_1 || ''} ${r.venue.address_2 || ''} ${r.venue.address_3 || ''} ${r.venue.city || ''}`)
+				if (r.venue) 	 embed.addField('Venue', `${r.venue.name || ''}, ${r.venue.address_1 || ''} ${r.venue.address_2 || ''} ${r.venue.address_3 || ''} ${r.venue.city || ''}`)
 				
 				message.channel.send(embed);							
 			}
