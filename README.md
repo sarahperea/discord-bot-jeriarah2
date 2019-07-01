@@ -9,6 +9,7 @@ If you are a person who always have the discord open and doesn't want to hassle 
 --- 
 
 ### Commands
+
 - **join**: Joins discord bot to channel
 
 	`$join`
@@ -23,7 +24,7 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 - **event**: Find meetup events by anything related in your input
 
-	`$event <meetup-event>`
+	`$event <keyword1> <keyword2> <...keywords>`
 
 - **play**: Play music that searches on youtube
 
@@ -33,8 +34,11 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 	`$search <keyword1> <keyword2> <...keywords>`
 
+---
+
 ### Test
-*You need to provide required environment variables below: *
+
+You need to provide required environment variables below: 
 
 - DISCORD_BOT_JERIARAH_TOKEN
 - MEETUP_API_KEY
