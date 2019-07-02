@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Jeriarah2 Bot",
 	"main": "index.js",
-	"author": "Sarah D. Perea",
+	"authors": "Sarah D. Perea and Jerico C. Rillo",
 	"dependencies": {
 		"axios": "^0.19.0",
 		"bufferutil": "^4.0.1",
