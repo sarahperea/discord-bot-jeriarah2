@@ -1,8 +1,8 @@
 {
-	"name": "samgyupsar-bot",
+	"name": "jeriarah2-bot",
 	"version": "1.0.0",
-	"description": "Samgyupsar Bot",
-	"main": "bot.js",
+	"description": "Jeriarah2 Bot",
+	"main": "index.js",
 	"author": "Sarah D. Perea",
 	"dependencies": {
 		"axios": "^0.19.0",
