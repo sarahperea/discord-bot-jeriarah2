@@ -13,16 +13,14 @@ function playURL(url, connection) {
 function getURL (res, connection) {
   if (res.data && res.data.items && res.data.items[0].id && res.data.items[0].id.videoId) {
     let videoId = res.data.items[0].id.videoId;
-    urlToPlay = `https://www.youtube.com/watch?v=${videoId}`
 
-    playURL(urlToPlay, connection)
+    playURL(`https://www.youtube.com/watch?v=${videoId}`, connection)
   }
 }
 
 module.exports.run = async(client, message, args) => {
   let url_regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
   let channel = message.member.voiceChannel;
-  let urlToPlay = '';
 
   if (args.length === 0) {
     console.log("Sorry, this command requires a youtube video url to play. :P")
@@ -32,8 +30,7 @@ module.exports.run = async(client, message, args) => {
         .then(connection => { // Connection is an instance of VoiceConnection
 
           if (args.length === 1 && args[0].match(url_regex)) {
-            urlToPlay = args[0];
-            playURL(urlToPlay, connection)
+            playURL(args[0], connection)
           } else {
             let queries = args.join(',')
             ytSearch.searchByQueries(queries, getURL, connection);
