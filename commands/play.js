@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const axios = require('axios');
 const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
+let ytSearch = require('../helpers/youtube-search.js')
 
 module.exports.run = async(client, message, args) => {
   let url_regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
@@ -22,6 +23,8 @@ module.exports.run = async(client, message, args) => {
             const dispatcher = connection.playStream(stream, streamOptions);
           } else {
             let queries = args.join(',')
+            let results = ytSearch.searchByQueries(queries);
+
             axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${queries}&maxResults=1&key=${apiKey}`, {
             }).then(res => {
               if (res.data && res.data.items && res.data.items[0].id && res.data.items[0].id.videoId) {
