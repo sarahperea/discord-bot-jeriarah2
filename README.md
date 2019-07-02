@@ -43,3 +43,10 @@ You need to provide required environment variables below:
 - DISCORD_BOT_JERIARAH_TOKEN
 - MEETUP_API_KEY
 - YOUTUBE_DATA_API_KEY
+
+---
+
+### Developers
+
+- Sarah D. Perea (https://github.com/sarahperea)
+- Jerico C. Rillo (https://github.com/Hidejec)
