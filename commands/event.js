@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const axios = require('axios');
-const apiKey = process.env.MEETUP_API_KEY; 
+const apiKey = process.env.MEETUP_API_KEY_JERIARAH2; 
 
 function getMonth(month) {
 	let monthNames = [
