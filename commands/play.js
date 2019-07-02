@@ -12,8 +12,11 @@ module.exports.run = async(client, message, args) => {
           const streamOptions = { seek: 0, volume: 5 };
   	      const stream = ytdl(args[0], { filter : 'audioonly' });
   	      const dispatcher = connection.playStream(stream, streamOptions);
+          console.log('success connnect')
         })
-        .catch();
+        .catch((err)=>{
+          console.log(err)
+        });
     } else {
       message.reply('You need to join a voice channel first!');
     }
