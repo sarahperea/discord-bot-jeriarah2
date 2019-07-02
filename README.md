@@ -26,6 +26,10 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 	`$event <keyword1> <keyword2> <...keywords>`
 
+- **eventcity**: Find meetup events by city
+
+	`$event <keyword1> <keyword2> <...keywords>`
+
 - **play**: Play music that searches on youtube
 
 	`$play <youtube-url>`
