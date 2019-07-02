@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const axios = require('axios');
 const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
-let ytSearch = require('../helpers/youtube-search.js')
+let youtubeHelper = require('../helpers/youtubeHelper.js')
 
 function playURL(url, connection) {
   const streamOptions = { seek: 0, volume: 5 };
@@ -11,8 +11,8 @@ function playURL(url, connection) {
 }
 
 function getURL (res, connection) {
-  if (res.data && res.data.items && res.data.items[0].id && res.data.items[0].id.videoId) {
-    let videoId = res.data.items[0].id.videoId;
+  if (res.items && res.items[0].id && res.items[0].id.videoId) {
+    let videoId = res.items[0].id.videoId;
 
     playURL(`https://www.youtube.com/watch?v=${videoId}`, connection)
   }
@@ -23,17 +23,16 @@ module.exports.run = async(client, message, args) => {
   let channel = message.member.voiceChannel;
 
   if (args.length === 0) {
-    console.log("Sorry, this command requires a youtube video url to play. :P")
+    message.reply("Sorry, this command requires a youtube video url to play. :P")
   } else {
 	if (channel) {
       	channel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-
           if (args.length === 1 && args[0].match(url_regex)) {
             playURL(args[0], connection)
           } else {
             let queries = args.join(',')
-            ytSearch.searchByQueries(queries, getURL, connection);
+            youtubeHelper.searchByQueries(queries, getURL, connection);
           }
         })
         .catch((err)=>{
