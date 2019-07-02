@@ -31,11 +31,9 @@ module.exports.run = async(client, message, args) => {
       	channel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
 
-          if (args.length === 1 && args[0].match(regex)) {
+          if (args.length === 1 && args[0].match(url_regex)) {
             urlToPlay = args[0];
-            const streamOptions = { seek: 0, volume: 5 };
-            const stream = ytdl(urlToPlay, { filter : 'audioonly' });
-            const dispatcher = connection.playStream(stream, streamOptions);
+            playURL(urlToPlay, connection)
           } else {
             let queries = args.join(',')
             ytSearch.searchByQueries(queries, getURL, connection);
