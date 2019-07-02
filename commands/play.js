@@ -4,6 +4,21 @@ const axios = require('axios');
 const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
 let ytSearch = require('../helpers/youtube-search.js')
 
+function playURL(url, connection) {
+  const streamOptions = { seek: 0, volume: 5 };
+  const stream = ytdl(url, { filter : 'audioonly' });
+  const dispatcher = connection.playStream(stream, streamOptions);
+}
+
+function getURL (res, connection) {
+  if (res.data && res.data.items && res.data.items[0].id && res.data.items[0].id.videoId) {
+    let videoId = res.data.items[0].id.videoId;
+    urlToPlay = `https://www.youtube.com/watch?v=${videoId}`
+
+    playURL(urlToPlay, connection)
+  }
+}
+
 module.exports.run = async(client, message, args) => {
   let url_regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
   let channel = message.member.voiceChannel;
@@ -23,21 +38,7 @@ module.exports.run = async(client, message, args) => {
             const dispatcher = connection.playStream(stream, streamOptions);
           } else {
             let queries = args.join(',')
-            let results = ytSearch.searchByQueries(queries);
-
-            axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${queries}&maxResults=1&key=${apiKey}`, {
-            }).then(res => {
-              if (res.data && res.data.items && res.data.items[0].id && res.data.items[0].id.videoId) {
-                let videoId = res.data.items[0].id.videoId;
-                urlToPlay = `https://www.youtube.com/watch?v=${videoId}`
-
-                const streamOptions = { seek: 0, volume: 5 };
-                const stream = ytdl(urlToPlay, { filter : 'audioonly' });
-                const dispatcher = connection.playStream(stream, streamOptions);
-              }
-            }).catch((err)=>{
-              console.log(err)
-            })
+            ytSearch.searchByQueries(queries, getURL, connection);
           }
         })
         .catch((err)=>{
