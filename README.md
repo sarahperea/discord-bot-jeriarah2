@@ -18,11 +18,11 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 	`$status`
 
-- **topic**: Find meetup topics by anything related in your input
+- **topic**: Find meetup topics by anything related to your input
 
 	`$topic <meetup-topic>`
 
-- **event**: Find meetup events by anything related in your input
+- **event**: Find meetup events by anything related to your input
 
 	`$event <keyword1> <keyword2> <...keywords>`
 
