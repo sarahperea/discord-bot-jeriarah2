@@ -1,5 +1,4 @@
 const ytdl = require('ytdl-core');
-const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
 let youtubeHelper = require('../helpers/youtubeHelper.js')
 
 function playURL(url, connection, message) {
