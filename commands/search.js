@@ -1,7 +1,4 @@
 const Discord = require('discord.js');
-const ytdl = require('ytdl-core');
-const axios = require('axios');
-const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
 const youtubeHelper = require('../helpers/youtubeHelper.js')
 
 function displaySearchResults (res, connection, message) {
