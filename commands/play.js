@@ -1,20 +1,19 @@
-const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
-const axios = require('axios');
 const apiKey = process.env.YOUTUBE_DATA_API_KEY_JERIARAH2;
 let youtubeHelper = require('../helpers/youtubeHelper.js')
 
-function playURL(url, connection) {
+function playURL(url, connection, message) {
   const streamOptions = { seek: 0, volume: 5 };
   const stream = ytdl(url, { filter : 'audioonly' });
   const dispatcher = connection.playStream(stream, streamOptions);
+  message.channel.send(`**Playing ${url}**`);
 }
 
-function getURL (res, connection) {
+function getURL (res, connection, message) {
   if (res.items && res.items[0].id && res.items[0].id.videoId) {
     let videoId = res.items[0].id.videoId;
 
-    playURL(`https://www.youtube.com/watch?v=${videoId}`, connection)
+    playURL(`https://www.youtube.com/watch?v=${videoId}`, connection, message)
   }
 }
 
@@ -32,7 +31,7 @@ module.exports.run = async(client, message, args) => {
             playURL(args[0], connection)
           } else {
             let queries = args.join(',')
-            youtubeHelper.searchByQueries(queries, getURL, connection);
+            youtubeHelper.searchByQueries(queries, getURL, connection, message);
           }
         })
         .catch((err)=>{
