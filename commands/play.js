@@ -29,10 +29,10 @@ module.exports.run = async(client, message, args) => {
       .then(connection => { // Connection is an instance of VoiceConnection
         connection_copy = connection
         if (args.length === 1 && args[0].match(url_regex)) {
-          playURL(args[0], connection)
+          playURL(args[0])
         } else {
           let queries = args.join(',')
-          youtubeHelper.searchByQueries(queries, getURL, connection, message);
+          youtubeHelper.searchByQueries(queries, getURL, message);
         }
       })
       .catch((err)=>{

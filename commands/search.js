@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const youtubeHelper = require('../helpers/youtubeHelper.js')
 
-function displaySearchResults (res, connection, message) {
+function displaySearchResults (res) {
   for (let i=0; i<res.items.length; i++) {
     let r = res.items[i] 
     if (r) {
@@ -11,12 +11,13 @@ function displaySearchResults (res, connection, message) {
         .setDescription(`${r.snippet.description.substring(0,99)}...`)
         .setURL(`https://www.youtube.com/watch?v=${r.id.videoId}`)
 
-        message.channel.send(embed)
+        message_copy.channel.send(embed)
     } 
   }
 }
 
 module.exports.run = async(client, message, args) => {
+  message_copy = message
   let queries = args.join(',')
   let channel = message.member.voiceChannel;
   if (args.length === 0) {
@@ -25,7 +26,7 @@ module.exports.run = async(client, message, args) => {
 	if (channel) {
     	channel.join()
       .then(connection => {
-        youtubeHelper.searchByQueries(queries, displaySearchResults, connection, message)                        
+        youtubeHelper.searchByQueries(queries, displaySearchResults, message)                        
       })
       .catch();
     } else {
