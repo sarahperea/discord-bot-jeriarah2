@@ -46,9 +46,9 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 You need to provide required environment variables below: 
 
-- DISCORD_BOT_JERIARAH_TOKEN
-- MEETUP_API_KEY
-- YOUTUBE_DATA_API_KEY
+- DISCORD_BOT_JERIARAH2_TOKEN
+- MEETUP_API_KEY_JERIARAH2
+- YOUTUBE_DATA_API_KEY_JERIARAH2
 
 ---
 
