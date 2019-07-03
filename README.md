@@ -33,6 +33,7 @@ If you are a person who always have the discord open and doesn't want to hassle 
 - **play**: Play music that searches on youtube either by youtube URL or by keywords
 
 	`$play <youtube-url>`
+	
 	`$play <keyword1> <keyword2> <...keywords>`
 		
 - **search**: Return top 5 youtube video results containing the entered keywords
