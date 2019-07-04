@@ -1,4 +1,4 @@
-# Jeriarah Discord Bot
+# Jeriarah2 Discord Bot
 
 A very simple discord bot that connects to Meetup and Youtube API.
 
@@ -12,7 +12,7 @@ If you are a person who always have the discord open and doesn't want to hassle 
 
 - **join**: Joins discord bot to channel
 
-	`$join`
+	> `$join`
 
 - **status**: Check the meetup api service status
 
