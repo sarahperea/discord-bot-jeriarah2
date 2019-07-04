@@ -11,7 +11,7 @@ If you are someone who always have the discord open and doesn't want to hassle y
 ### Commands
 
 - **join**: Joins discord bot to channel
-> `$join`
+	> `$join`
 
 - **status**: Check the meetup api service status
 > `$status`
